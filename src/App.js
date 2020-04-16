@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Components/Layout/Navbar';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import Home from './Components/Home/Home';
+import './App.css'
+import Book from './Components/Home/Book';
+import Portal from './Components/Dashboard/Portal';
+import Appointments from './Components/Dashboard/Appointment';
+import Patient from './Components/Dashboard/Patient';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <div>
+         <Navbar></Navbar>
+         <Switch>
+           <Route path="/" exact component={Home}/>
+           <Route path='/portal' exact component={Portal}/>
+           <Route path='/portal/appointment' exact component={Appointments}/>
+           <Route path='/portal/patient' component={Patient}/>
+           <Route path='/portal/patients' component={Patient}/>
+           <Route path="/book" component={Book}/>
+         </Switch>
+       </div>
+      </BrowserRouter>
   );
 }
 
